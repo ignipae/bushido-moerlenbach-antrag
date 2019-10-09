@@ -8,6 +8,7 @@ const port = process.env.PORT || 8080;
 
 // Serve only the static files form the dist directory
 app.use(express.static(__dirname + '/dist/bushido-moerlenbach-antrag'));
+app.use('/api', require('./server/routes'));
 
 // Start the app by listening on the default Heroku port
 app.listen(port, err => {
