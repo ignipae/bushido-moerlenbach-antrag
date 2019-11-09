@@ -27,6 +27,5 @@ const sendMail = (mailOptions, callback) => {
 
 
 module.exports = {
-    sendMail,
-    sendNotificationMail
+    sendMail
 };
