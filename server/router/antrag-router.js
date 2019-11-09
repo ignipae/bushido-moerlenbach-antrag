@@ -1,9 +1,16 @@
 const router = require('express').Router();
+const mailhelper = require("../mailhelper");
 
 const register = (req, res) => {
-    res
-        .status(200)
-        .json({message: 'This is the registration endpoint'});
+    mailhelper.sendMail({
+       
+    },
+    () => {
+        res.status(200).json({
+            message: 'success',
+        });
+    });
+   
 };
 
 router.get('/registrieren', register);

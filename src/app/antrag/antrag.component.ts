@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import * as iban from "iban";
 import * as moment from 'moment';
+import { BackendService } from '../backend.service';
 @Component({selector: 'app-antrag', templateUrl: './antrag.component.html', styleUrls: ['./antrag.component.scss']})
 export class AntragComponent implements OnInit {
   iban : string;
@@ -32,7 +33,7 @@ export class AntragComponent implements OnInit {
   geschlecht = "Divers";
   beruf = true;
   teilnameart = true;
-  constructor() {
+  constructor(public backend: BackendService) {
     let rs = iban.isValid('hello world');
     let rs2 = iban.isValid('BE68539007547034');
     console.log(rs);
@@ -95,6 +96,9 @@ export class AntragComponent implements OnInit {
   }
   _validateIban() {
     this.validIban = iban.isValid(this.iban);
+  }
+  send(){
+   this.backend.sendeAntrag().subscribe(() => console.log("success"));
   }
 
 }
