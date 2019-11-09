@@ -13,7 +13,7 @@ const sendMail = (mailOptions, callback) => {
 
 
     const subject = 'Mitgliedschaftsantrag';
-    const content = `${greetings}<br>Please see the entered information here:<br>----<br>${goodbye}`;
+    const content = `${greetings}<br>Please see the entered information here:<br>${mailOptions.input}<br>${goodbye}`;
     const msg = {
         to: "julian.breuksch@gmail.com",
         from,

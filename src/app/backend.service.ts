@@ -8,7 +8,7 @@ export class BackendService {
 
   constructor(public http: HttpClient) { }
 
-  sendeAntrag(){
-return this.http.get("/api/antrag/registrieren");
+  sendeAntrag(input){
+return this.http.post("/api/antrag/registrieren",input);
   }
 }

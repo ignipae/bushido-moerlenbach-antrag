@@ -13,11 +13,11 @@
       <div class="field is-narrow">
         <div class="control">
           <label class="radio">
-            <input type="radio" [value]="true" name="teilname" [(ngModel)]="teilnameart" />
+            <input type="radio" [value]="true" name="teilname" [(ngModel)]="input.teilnameart" />
             Aktive Teilname
           </label>
           <label class="radio">
-            <input type="radio" [value]="false" name="teilname" [(ngModel)]="teilnameart" />
+            <input type="radio" [value]="false" name="teilname" [(ngModel)]="input.teilnameart" />
             Passive Teilname
           </label>
         </div>
@@ -32,11 +32,11 @@
       <div class="field is-narrow">
         <div class="control">
           <label class="radio">
-            <input type="radio" name="berufstaetig" [value]="true" [(ngModel)]="beruf" />
+            <input type="radio" name="berufstaetig" [value]="true" [(ngModel)]="input.beruf" />
             Ja
           </label>
           <label class="radio">
-            <input type="radio" name="berufstaetig" [value]="false" [(ngModel)]="beruf" />
+            <input type="radio" name="berufstaetig" [value]="false" [(ngModel)]="input.beruf" />
             Nein
           </label>
         </div>
@@ -51,7 +51,7 @@
       <div class="field is-narrow">
         <div class="control">
           <div class="select is-fullwidth">
-            <select [(ngModel)]="geschlecht">
+            <select [(ngModel)]="input.geschlecht">
               <option>Divers</option>
               <option>Männlich</option>
               <option>Weiblich</option>
@@ -71,9 +71,9 @@
           <input
             class="input"
             type="text"
-            [(ngModel)]="vorname"
+            [(ngModel)]="input.vorname"
             placeholder="Vorname"
-            [class.is-danger]="vorname !== undefined && !vorname"
+            [class.is-danger]="input.vorname !== undefined && !input.vorname"
           />
         </p>
       </div>
@@ -82,8 +82,8 @@
           <input
             class="input"
             type="text"
-            [(ngModel)]="nachname"
-            [class.is-danger]="nachname !== undefined && !nachname"
+            [(ngModel)]="input.nachname"
+            [class.is-danger]="input.nachname !== undefined && !input.nachname"
             placeholder="Nachname"
           />
         </p>
@@ -101,9 +101,9 @@
           <input
             class="input"
             type="text"
-            [(ngModel)]="strasse"
+            [(ngModel)]="input.strasse"
             placeholder="Straße"
-            [class.is-danger]="strasse !== undefined && !strasse"
+            [class.is-danger]="input.strasse !== undefined && !input.strasse"
           />
         </p>
       </div>
@@ -112,9 +112,9 @@
           <input
             class="input"
             type="text"
-            [(ngModel)]="ort"
+            [(ngModel)]="input.ort"
             placeholder="Ort"
-            [class.is-danger]="ort !== undefined && !ort"
+            [class.is-danger]="input.ort !== undefined && !input.ort"
           />
         </p>
       </div>
@@ -123,9 +123,9 @@
           <input
             class="input"
             type="text"
-            [(ngModel)]="plz"
+            [(ngModel)]="input.plz"
             placeholder="PLZ"
-            [class.is-danger]="plz !== undefined && !plz"
+            [class.is-danger]="input.plz !== undefined && !input.plz"
           />
         </p>
       </div>
@@ -139,17 +139,17 @@
     <div class="field-body">
       <div class="field">
         <p class="control is-expanded ">
-          <input class="input" type="text" [(ngModel)]="geb_tag" placeholder="Tag" />
+          <input class="input" type="text" [(ngModel)]="input.geb_tag" placeholder="Tag" />
         </p>
       </div>
       <div class="field">
         <p class="control is-expanded ">
-          <input class="input" type="text" [(ngModel)]="geb_monat" placeholder="Monat" />
+          <input class="input" type="text" [(ngModel)]="input.geb_monat" placeholder="Monat" />
         </p>
       </div>
       <div class="field">
         <p class="control is-expanded ">
-          <input class="input" type="text" [(ngModel)]="geb_jahr" placeholder="Jahr" />
+          <input class="input" type="text" [(ngModel)]="input.geb_jahr" placeholder="Jahr" />
         </p>
       </div>
     </div>
@@ -161,17 +161,17 @@
     <div class="field-body">
       <div class="field">
         <p class="control is-expanded ">
-          <input class="input" type="tel" [(ngModel)]="privat_telefon" placeholder="Privat" />
+          <input class="input" type="tel" [(ngModel)]="input.privat_telefon" placeholder="Privat" />
         </p>
       </div>
       <div class="field">
         <p class="control is-expanded ">
-          <input class="input" type="tel" [(ngModel)]="mobil" placeholder="Mobil" />
+          <input class="input" type="tel" [(ngModel)]="input.mobil" placeholder="Mobil" />
         </p>
       </div>
       <div class="field">
         <p class="control is-expanded ">
-          <input class="input" type="tel" [(ngModel)]="telfax" placeholder="Telefax" />
+          <input class="input" type="tel" [(ngModel)]="input.telfax" placeholder="Telefax" />
         </p>
       </div>
     </div>
@@ -184,7 +184,7 @@
     <div class="field-body">
       <div class="field">
         <p class="control is-expanded">
-          <input class="input" type="email" [(ngModel)]="email" placeholder="xxx@email.de" />
+          <input class="input" type="email" [(ngModel)]="input.email" placeholder="xxx@email.de" />
         </p>
       </div>
     </div>
@@ -199,12 +199,12 @@
     <div class="field-body">
       <div class="field">
         <p class="control is-expanded ">
-          <input class="input" type="text" [(ngModel)]="konto_vorname" placeholder="Vorname" />
+          <input class="input" type="text" [(ngModel)]="input.konto_vorname" placeholder="Vorname" />
         </p>
       </div>
       <div class="field">
         <p class="control is-expanded ">
-          <input class="input" type="text" [(ngModel)]="konto_nachname" placeholder="Nachname" />
+          <input class="input" type="text" [(ngModel)]="input.konto_nachname" placeholder="Nachname" />
         </p>
       </div>
     </div>
@@ -216,17 +216,17 @@
     <div class="field-body">
       <div class="field">
         <p class="control is-expanded ">
-          <input class="input" type="text" [(ngModel)]="konto_geb_tag" placeholder="Tag" />
+          <input class="input" type="text" [(ngModel)]="input.konto_geb_tag" placeholder="Tag" />
         </p>
       </div>
       <div class="field">
         <p class="control is-expanded ">
-          <input class="input" type="text" [(ngModel)]="konto_geb_monat" placeholder="Monat" />
+          <input class="input" type="text" [(ngModel)]="input.konto_geb_monat" placeholder="Monat" />
         </p>
       </div>
       <div class="field">
         <p class="control is-expanded ">
-          <input class="input" type="text" [(ngModel)]="konto_geb_jahr" placeholder="Jahr" />
+          <input class="input" type="text" [(ngModel)]="input.konto_geb_jahr" placeholder="Jahr" />
         </p>
       </div>
     </div>
@@ -243,14 +243,14 @@
             [class.is-danger]="validIban != undefined && validIban == false"
             [class.is-success]="validIban != undefined && validIban == true"
             type="text"
-            [(ngModel)]="iban"
+            [(ngModel)]="input.iban"
             (change)="_validateIban()"
           />
         </p>
       </div>
     </div>
   </div>
-  <div *ngIf="teilnameart">
+  <div *ngIf="input.teilnameart">
     <div style="width:100%;justify-content: center;display:flex;margin-top:1rem;margin-bottom:1rem">
       <h2 class="title is-5">- Sportart -</h2>
     </div>
@@ -262,7 +262,7 @@
         <div class="field">
           <p class="control is-expanded ">
             <label class="checkbox">
-              <input type="checkbox" [(ngModel)]="type_karate" />
+              <input type="checkbox" [(ngModel)]="input.type_karate" />
               Karate
             </label>
           </p>
@@ -270,7 +270,7 @@
         <div class="field">
           <p class="control is-expanded ">
             <label class="checkbox">
-              <input type="checkbox" [(ngModel)]="type_selbst" />
+              <input type="checkbox" [(ngModel)]="input.type_selbst" />
               Selbstverteidigung
             </label>
           </p>
@@ -278,7 +278,7 @@
         <div class="field">
           <p class="control is-expanded ">
             <label class="checkbox">
-              <input type="checkbox" [(ngModel)]="type_arnis" />
+              <input type="checkbox" [(ngModel)]="input.type_arnis" />
               Combat - Arnis
             </label>
           </p>
@@ -333,7 +333,7 @@
     <div class="field-body">
       <div class="field">
         <div class="control">
-          <textarea class="textarea" [(ngModel)]="anmerkungen"></textarea>
+          <textarea class="textarea" [(ngModel)]="input.anmerkungen"></textarea>
         </div>
       </div>
     </div>

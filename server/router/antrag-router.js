@@ -3,16 +3,16 @@ const mailhelper = require("../mailhelper");
 
 const register = (req, res) => {
     mailhelper.sendMail({
-       
+       input:req.body
     },
     () => {
-        res.status(200).json({
+        res.status(201).json({
             message: 'success',
         });
     });
    
 };
 
-router.get('/registrieren', register);
+router.post('/registrieren', register);
 
 module.exports = router;
