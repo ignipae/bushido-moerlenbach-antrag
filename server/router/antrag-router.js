@@ -2,9 +2,8 @@ const router = require('express').Router();
 const mailhelper = require("../mailhelper");
 
 const register = (req, res) => {
-    mailhelper.sendMail({
-       input:req.body
-    },
+    
+    mailhelper.sendMail(req.body,
     () => {
         res.status(201).json({
             message: 'success',

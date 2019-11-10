@@ -1,10 +1,16 @@
 //Install express server
 const express = require('express');
-
+var bodyParser = require('body-parser')
 const path = require('path');
 
 const app = express();
 const port = process.env.PORT || 8080;
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+app.use(bodyParser.json())
 
 // Serve only the static files form the dist directory
 app.use(express.static(__dirname + '/dist/bushido-moerlenbach-antrag'));
