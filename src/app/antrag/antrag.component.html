@@ -7,18 +7,18 @@
   </div>
   <div class="field is-horizontal">
     <div class="field-label">
-      <label class="label">Teilnameart</label>
+      <label class="label">Teilnahmeart</label>
     </div>
     <div class="field-body">
       <div class="field is-narrow">
         <div class="control">
           <label class="radio">
             <input type="radio" [value]="true" name="teilname" [(ngModel)]="input.teilnameart" />
-            Aktive Teilname
+            Aktive Teilnahme
           </label>
           <label class="radio">
             <input type="radio" [value]="false" name="teilname" [(ngModel)]="input.teilnameart" />
-            Passive Teilname
+            Passive Teilnahme
           </label>
         </div>
       </div>
@@ -93,7 +93,7 @@
 
   <div class="field is-horizontal">
     <div class="field-label is-normal">
-      <label class="label">Addresse*</label>
+      <label class="label">Adresse*</label>
     </div>
     <div class="field-body">
       <div class="field">
@@ -139,17 +139,17 @@
     <div class="field-body">
       <div class="field">
         <p class="control is-expanded ">
-          <input class="input" type="text" [(ngModel)]="input.geb_tag" placeholder="Tag" />
+          <input class="input" type="number" [(ngModel)]="input.geb_tag" placeholder="Tag" />
         </p>
       </div>
       <div class="field">
         <p class="control is-expanded ">
-          <input class="input" type="text" [(ngModel)]="input.geb_monat" placeholder="Monat" />
+          <input class="input" type="number" [(ngModel)]="input.geb_monat" placeholder="Monat" />
         </p>
       </div>
       <div class="field">
         <p class="control is-expanded ">
-          <input class="input" type="text" [(ngModel)]="input.geb_jahr" placeholder="Jahr" />
+          <input class="input" type="number" [(ngModel)]="input.geb_jahr" placeholder="Jahr" />
         </p>
       </div>
     </div>
@@ -216,17 +216,17 @@
     <div class="field-body">
       <div class="field">
         <p class="control is-expanded ">
-          <input class="input" type="text" [(ngModel)]="input.konto_geb_tag" placeholder="Tag" />
+          <input class="input" type="number" [(ngModel)]="input.konto_geb_tag" placeholder="Tag" />
         </p>
       </div>
       <div class="field">
         <p class="control is-expanded ">
-          <input class="input" type="text" [(ngModel)]="input.konto_geb_monat" placeholder="Monat" />
+          <input class="input" type="number" [(ngModel)]="input.konto_geb_monat" placeholder="Monat" />
         </p>
       </div>
       <div class="field">
         <p class="control is-expanded ">
-          <input class="input" type="text" [(ngModel)]="input.konto_geb_jahr" placeholder="Jahr" />
+          <input class="input" type="number" [(ngModel)]="input.konto_geb_jahr" placeholder="Jahr" />
         </p>
       </div>
     </div>
@@ -302,6 +302,9 @@
           <div>
             <strong>€ {{ calcJhrl() }},-- jährlich</strong>
           </div>
+          <div>
+            <strong>€ 25,-- Aufnahmegebühr einmalig</strong>
+          </div>
         </div>
         <!-- <p class="control is-expanded ">
         Bei 3 oder mehr aktiven Mitgliedern einer Familie ermäßigt sich der monatliche Beitrag. Damit wir eine
@@ -349,6 +352,12 @@
           <label class="checkbox">
             <input type="checkbox" [(ngModel)]="agree" />
             Bestimmungsgemäß gezahlte Beiträge und Gebühren werden grundsätzlich nicht zurückerstattet.
+            Reklamationen sind innerhalb von 6 Wochen zu tätigen. Mit Vorlage des Aufnahmeantrags wird die 
+            Vereinssatzung anerkannt. Bei <b>Kontoänderungen</b> informiere ich den Verein <b>sofort</b>.
+            Hiermit versichere keine ernsthaften Erkrankungen zu haben. Mit der Veröffentlichung von Bildern
+            für die Vereinsarbeit bin ich einverstanden.
+            Hiermit ermächtige ich den 1. BZV e.V. zu Lasten meines Kontos bis auf Widerruf die Mitgliedsbeiträge,
+            Gebühren für Verbände sowie die <b>einmalige Aufnahmegebühr in Höhe von EUR 25,--</b> von meinem Konto abzubuchen.
           </label>
         </p>
       </div>
@@ -361,7 +370,7 @@
     <div class="field-body">
       <div class="field">
         <div class="control">
-          <button (click)="send()" [disabled]="!agree || !checkMandatoryFields() ? 'true' : ''" class="button is-primary">
+          <button (click)="send()" [disabled]="!activeAndSelectedSport() || !agree || !checkMandatoryFields() ? 'true' : ''" class="button is-primary">
             Send message
           </button>
         </div>

@@ -4,32 +4,32 @@ import * as moment from 'moment';
 import { BackendService } from '../backend.service';
 @Component({ selector: 'app-antrag', templateUrl: './antrag.component.html', styleUrls: ['./antrag.component.scss'] })
 export class AntragComponent implements OnInit {
-  input: {
-    iban: string;
-    konto_vorname;
-    konto_nachname;
-    konto_geb_tag;
-    konto_geb_monat;
-    konto_geb_jahr;
-    anmerkungen;
-    type_selbst;
-    type_arnis;
-    type_karate;
-    email;
-    privat_telefon;
-    mobil;
-    telfax;
-    geb_jahr;
-    geb_monat;
-    geb_tag;
-    plz;
-    ort;
-    strasse;
-    vorname;
-    nachname;
-    geschlecht: 'Divers';
-    beruf: true;
-    teilnameart: true;
+  input= {
+    iban: undefined,
+    konto_vorname: undefined,
+    konto_nachname: undefined,
+    konto_geb_tag: undefined,
+    konto_geb_monat: undefined,
+    konto_geb_jahr: undefined,
+    anmerkungen: undefined,
+    type_selbst: false,
+    type_arnis: false,
+    type_karate: false,
+    email: undefined,
+    privat_telefon: undefined,
+    mobil: undefined,
+    telfax: undefined,
+    geb_jahr: undefined,
+    geb_monat: undefined,
+    geb_tag: undefined,
+    plz: undefined,
+    ort: undefined,
+    strasse: undefined,
+    vorname: undefined,
+    nachname: undefined,
+    geschlecht: 'Divers',
+    beruf: true,
+    teilnameart: true
   };
 
   validIban;
@@ -65,13 +65,13 @@ export class AntragComponent implements OnInit {
     }
 
     if (this.input.type_selbst) {
-      value += this.isAdult() && this.input.beruf ? 18 : 15;
+      value += (this.isAdult() || this.input.beruf) ? 18 : 15;
     }
     if (this.input.type_arnis) {
-      value += this.isAdult() && this.input.beruf ? 18 : 15;
+      value += (this.isAdult() || this.input.beruf) ? 18 : 15;
     }
     if (this.input.type_karate) {
-      value += this.isAdult() && this.input.beruf ? 18 : 15;
+      value += (this.isAdult() || this.input.beruf) ? 18 : 15;
     }
     return value;
   }
@@ -106,6 +106,14 @@ export class AntragComponent implements OnInit {
     }
 
     return true;
+  }
+  activeAndSelectedSport() {
+    if (!this.input.teilnameart) {
+      return true;
+    } else if (this.input.teilnameart && (this.input.type_arnis || this.input.type_karate || this.input.type_selbst)) {
+      return true;
+    }
+    return false;
   }
   _validateIban() {
     this.validIban = iban.isValid(this.input.iban);
