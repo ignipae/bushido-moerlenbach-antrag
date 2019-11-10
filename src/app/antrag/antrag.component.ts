@@ -46,6 +46,8 @@ export class AntragComponent implements OnInit {
   }
 
   _clear(){
+    this.validIban = undefined;
+    this.agree = false;
     this.input = {
       iban: undefined,
       konto_vorname: undefined,

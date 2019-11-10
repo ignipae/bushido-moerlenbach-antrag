@@ -429,7 +429,7 @@
             [disabled]="!activeAndSelectedSport() || !agree || !checkMandatoryFields() ? 'true' : ''"
             class="button is-primary"
           >
-            Send message
+            Antrag senden
           </button>
         </div>
       </div>
@@ -441,9 +441,15 @@
   <div class="modal-background"></div>
   <div class="modal-card">
     <section class="modal-card-body">
-      Vielen Dank für Ihren Antrag. <br />
-      Sie werden in Kürze eine Bestätigung per E-Mail erhalten, welche Sie bitte unterschrieben mitbringen, sobald Sie
-      am ersten Trainingstag erscheinen.
+      
+      <div style="display:flex;align-items: center">
+          <img style="width:3.5rem; margin-right:1rem" src="../../assets/success.svg" />
+          <div>
+              Vielen Dank für Ihren Antrag. <br />
+              Sie werden in Kürze eine Bestätigung per E-Mail erhalten, welche Sie bitte unterschrieben mitbringen, sobald Sie
+              am ersten Trainingstag erscheinen.
+          </div>
+        </div>
     </section>
     <footer class="modal-card-foot">
       <button class="button is-success" (click)="successOpen = false">Schließen</button>
@@ -455,8 +461,13 @@
   <div class="modal-background"></div>
   <div class="modal-card">
     <section class="modal-card-body">
-      Irgendetwas is gerade schief gelaufen. <br />
-      Bitte versuchen Sie es zu einem späteren Zeitpunkt erneut.
+      <div style="display:flex;align-items: center">
+        <img style="width:3.5rem; margin-right:1rem" src="../../assets/error.svg" />
+        <div>
+          Irgendetwas is gerade schief gelaufen. <br />
+          Bitte versuchen Sie es zu einem späteren Zeitpunkt erneut.
+        </div>
+      </div>
     </section>
     <footer class="modal-card-foot">
       <button class="button" (click)="errorOpen = false">Schließen</button>
