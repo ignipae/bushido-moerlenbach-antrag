@@ -4,7 +4,7 @@ import * as moment from 'moment';
 import { BackendService } from '../backend.service';
 @Component({ selector: 'app-antrag', templateUrl: './antrag.component.html', styleUrls: ['./antrag.component.scss'] })
 export class AntragComponent implements OnInit {
-  input= {
+  input = {
     iban: undefined,
     konto_vorname: undefined,
     konto_nachname: undefined,
@@ -44,7 +44,26 @@ export class AntragComponent implements OnInit {
   }
 
   ngOnInit() {}
-
+  validEmail(email){
+    let valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
+    return valid;
+  }
+  validDay(day) {
+    if (day != undefined) {
+      if (day > 0 && day <= 31) {
+        return true;
+      }
+    }
+    return false;
+  }
+  validMonth(month) {
+    if (month != undefined) {
+      if (month > 0 && month <= 12) {
+        return true;
+      }
+    }
+    return false;
+  }
   isAdult() {
     if (this.input.geb_jahr && this.input.geb_monat && this.input.geb_tag) {
       const date = moment(new Date(this.input.geb_monat + '.' + this.input.geb_tag + '.' + this.input.geb_jahr));
@@ -65,13 +84,13 @@ export class AntragComponent implements OnInit {
     }
 
     if (this.input.type_selbst) {
-      value += (this.isAdult() || this.input.beruf) ? 18 : 15;
+      value += this.isAdult() || this.input.beruf ? 18 : 15;
     }
     if (this.input.type_arnis) {
-      value += (this.isAdult() || this.input.beruf) ? 18 : 15;
+      value += this.isAdult() || this.input.beruf ? 18 : 15;
     }
     if (this.input.type_karate) {
-      value += (this.isAdult() || this.input.beruf) ? 18 : 15;
+      value += this.isAdult() || this.input.beruf ? 18 : 15;
     }
     return value;
   }
@@ -91,13 +110,13 @@ export class AntragComponent implements OnInit {
       !this.input.ort ||
       !this.input.plz ||
       !this.input.strasse ||
-      !this.input.geb_jahr ||
-      !this.input.geb_monat ||
-      !this.input.geb_tag ||
-      !this.input.email ||
-      !this.input.konto_geb_jahr ||
-      !this.input.konto_geb_monat ||
-      !this.input.konto_geb_tag ||
+      (this.input.geb_jahr == undefined || this.input.geb_jahr < 0) ||
+      (this.input.geb_monat == undefined || !this.validMonth(this.input.geb_monat)) ||
+      (this.input.geb_tag == undefined || !this.validDay(this.input.geb_tag)) ||
+      !this.validEmail(this.input.email) ||
+      (this.input.konto_geb_jahr == undefined || this.input.konto_geb_jahr < 0) ||
+      (this.input.konto_geb_monat == undefined || !this.validMonth(this.input.konto_geb_monat)) ||
+      (this.input.konto_geb_tag == undefined || !this.validMonth(this.input.konto_geb_tag)) ||
       !this.input.konto_vorname ||
       !this.input.konto_nachname ||
       !this.validIban
@@ -120,6 +139,8 @@ export class AntragComponent implements OnInit {
   }
 
   send() {
-    this.backend.sendeAntrag({... this.input, btrgJrl: this.calcJhrl(), btrgMntl: this.calcMntl()}).subscribe(() => console.log('success'));
+    this.backend
+      .sendeAntrag({ ...this.input, btrgJrl: this.calcJhrl(), btrgMntl: this.calcMntl() })
+      .subscribe(() => console.log('success'));
   }
 }

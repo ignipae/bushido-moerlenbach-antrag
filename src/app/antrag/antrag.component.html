@@ -139,17 +139,35 @@
     <div class="field-body">
       <div class="field">
         <p class="control is-expanded ">
-          <input class="input" type="number" [(ngModel)]="input.geb_tag" placeholder="Tag" />
+          <input
+            class="input"
+            type="number"
+            [class.is-danger]="input.geb_tag !== undefined && !validDay(input.geb_tag)"
+            [(ngModel)]="input.geb_tag"
+            placeholder="Tag"
+          />
         </p>
       </div>
       <div class="field">
         <p class="control is-expanded ">
-          <input class="input" type="number" [(ngModel)]="input.geb_monat" placeholder="Monat" />
+          <input
+            class="input"
+            type="number"
+            [class.is-danger]="input.geb_monat !== undefined && !validMonth(input.geb_monat)"
+            [(ngModel)]="input.geb_monat"
+            placeholder="Monat"
+          />
         </p>
       </div>
       <div class="field">
         <p class="control is-expanded ">
-          <input class="input" type="number" [(ngModel)]="input.geb_jahr" placeholder="Jahr" />
+          <input
+            class="input"
+            type="number"
+            [class.is-danger]="input.geb_jahr !== undefined && input.geb_jahr < 0"
+            [(ngModel)]="input.geb_jahr"
+            placeholder="Jahr"
+          />
         </p>
       </div>
     </div>
@@ -184,7 +202,15 @@
     <div class="field-body">
       <div class="field">
         <p class="control is-expanded">
-          <input class="input" type="email" [(ngModel)]="input.email" placeholder="xxx@email.de" />
+          <input
+          
+         
+            class="input"
+            type="email"
+            [class.is-danger]="input.email !== undefined && !validEmail(input.email)"
+            [(ngModel)]="input.email"
+            placeholder="xxx@email.de"
+          />
         </p>
       </div>
     </div>
@@ -199,12 +225,24 @@
     <div class="field-body">
       <div class="field">
         <p class="control is-expanded ">
-          <input class="input" type="text" [(ngModel)]="input.konto_vorname" placeholder="Vorname" />
+          <input
+            class="input"
+            type="text"
+            [class.is-danger]="input.konto_vorname !== undefined && !input.konto_vorname"
+            [(ngModel)]="input.konto_vorname"
+            placeholder="Vorname"
+          />
         </p>
       </div>
       <div class="field">
         <p class="control is-expanded ">
-          <input class="input" type="text" [(ngModel)]="input.konto_nachname" placeholder="Nachname" />
+          <input
+            class="input"
+            type="text"
+            [class.is-danger]="input.konto_nachname !== undefined && !input.konto_nachname"
+            [(ngModel)]="input.konto_nachname"
+            placeholder="Nachname"
+          />
         </p>
       </div>
     </div>
@@ -216,17 +254,35 @@
     <div class="field-body">
       <div class="field">
         <p class="control is-expanded ">
-          <input class="input" type="number" [(ngModel)]="input.konto_geb_tag" placeholder="Tag" />
+          <input
+            class="input"
+            type="number"
+            [class.is-danger]="input.konto_geb_tag !== undefined && !validDay(input.konto_geb_tag)"
+            [(ngModel)]="input.konto_geb_tag"
+            placeholder="Tag"
+          />
         </p>
       </div>
       <div class="field">
         <p class="control is-expanded ">
-          <input class="input" type="number" [(ngModel)]="input.konto_geb_monat" placeholder="Monat" />
+          <input
+            class="input"
+            type="number"
+            [class.is-danger]="input.konto_geb_monat !== undefined && !validMonth(input.konto_geb_monat)"
+            [(ngModel)]="input.konto_geb_monat"
+            placeholder="Monat"
+          />
         </p>
       </div>
       <div class="field">
         <p class="control is-expanded ">
-          <input class="input" type="number" [(ngModel)]="input.konto_geb_jahr" placeholder="Jahr" />
+          <input
+            class="input"
+            type="number"
+            [class.is-danger]="input.konto_geb_jahr !== undefined && input.konto_geb_jahr < 0"
+            [(ngModel)]="input.konto_geb_jahr"
+            placeholder="Jahr"
+          />
         </p>
       </div>
     </div>
@@ -351,13 +407,13 @@
         <p class="control is-expanded ">
           <label class="checkbox">
             <input type="checkbox" [(ngModel)]="agree" />
-            Bestimmungsgemäß gezahlte Beiträge und Gebühren werden grundsätzlich nicht zurückerstattet.
-            Reklamationen sind innerhalb von 6 Wochen zu tätigen. Mit Vorlage des Aufnahmeantrags wird die 
-            Vereinssatzung anerkannt. Bei <b>Kontoänderungen</b> informiere ich den Verein <b>sofort</b>.
-            Hiermit versichere keine ernsthaften Erkrankungen zu haben. Mit der Veröffentlichung von Bildern
-            für die Vereinsarbeit bin ich einverstanden.
+            Bestimmungsgemäß gezahlte Beiträge und Gebühren werden grundsätzlich nicht zurückerstattet. Reklamationen
+            sind innerhalb von 6 Wochen zu tätigen. Mit Vorlage des Aufnahmeantrags wird die Vereinssatzung anerkannt.
+            Bei <b>Kontoänderungen</b> informiere ich den Verein <b>sofort</b>. Hiermit versichere ich keine ernsten
+            Erkrankungen zu haben. Mit der Veröffentlichung von Bildern für die Vereinsarbeit bin ich einverstanden.
             Hiermit ermächtige ich den 1. BZV e.V. zu Lasten meines Kontos bis auf Widerruf die Mitgliedsbeiträge,
-            Gebühren für Verbände sowie die <b>einmalige Aufnahmegebühr in Höhe von EUR 25,--</b> von meinem Konto abzubuchen.
+            Gebühren für Verbände sowie die <b>einmalige Aufnahmegebühr in Höhe von EUR 25,--</b> von meinem Konto
+            abzubuchen.
           </label>
         </p>
       </div>
@@ -370,7 +426,11 @@
     <div class="field-body">
       <div class="field">
         <div class="control">
-          <button (click)="send()" [disabled]="!activeAndSelectedSport() || !agree || !checkMandatoryFields() ? 'true' : ''" class="button is-primary">
+          <button
+            (click)="send()"
+            [disabled]="!activeAndSelectedSport() || !agree || !checkMandatoryFields() ? 'true' : ''"
+            class="button is-primary"
+          >
             Send message
           </button>
         </div>

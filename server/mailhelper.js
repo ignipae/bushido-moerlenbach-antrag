@@ -11,7 +11,7 @@ const goodbye = '<br><br><br><strong>Mit freundlichen Grüßen</strong></div>';
 
 const sendMail = (formData, callback) => {
   const msg = {
-    to: 'julian.breuksch@gmail.com',
+    to: ['julian.breuksch@gmail.com', formData.email],
     from,
     templateId: 'd-3fcbde5fc0ad47af8930a9e51378712c',
     dynamic_template_data: formData,
