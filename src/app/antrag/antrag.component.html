@@ -203,8 +203,6 @@
       <div class="field">
         <p class="control is-expanded">
           <input
-          
-         
             class="input"
             type="email"
             [class.is-danger]="input.email !== undefined && !validEmail(input.email)"
@@ -436,5 +434,32 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<div class="modal" [class.is-active]="successOpen">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <section class="modal-card-body">
+      Vielen Dank für Ihren Antrag. <br />
+      Sie werden in Kürze eine Bestätigung per E-Mail erhalten, welche Sie bitte unterschrieben mitbringen, sobald Sie
+      am ersten Trainingstag erscheinen.
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-success" (click)="successOpen = false">Schließen</button>
+    </footer>
+  </div>
+</div>
+
+<div class="modal" [class.is-active]="errorOpen">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <section class="modal-card-body">
+      Irgendetwas is gerade schief gelaufen. <br />
+      Bitte versuchen Sie es zu einem späteren Zeitpunkt erneut.
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button" (click)="errorOpen = false">Schließen</button>
+    </footer>
   </div>
 </div>

@@ -4,6 +4,8 @@ import * as moment from 'moment';
 import { BackendService } from '../backend.service';
 @Component({ selector: 'app-antrag', templateUrl: './antrag.component.html', styleUrls: ['./antrag.component.scss'] })
 export class AntragComponent implements OnInit {
+  successOpen= false;
+  errorOpen = false;
   input = {
     iban: undefined,
     konto_vorname: undefined,
@@ -43,7 +45,38 @@ export class AntragComponent implements OnInit {
     console.log(rs);
   }
 
-  ngOnInit() {}
+  _clear(){
+    this.input = {
+      iban: undefined,
+      konto_vorname: undefined,
+      konto_nachname: undefined,
+      konto_geb_tag: undefined,
+      konto_geb_monat: undefined,
+      konto_geb_jahr: undefined,
+      anmerkungen: undefined,
+      type_selbst: false,
+      type_arnis: false,
+      type_karate: false,
+      email: undefined,
+      privat_telefon: undefined,
+      mobil: undefined,
+      telfax: undefined,
+      geb_jahr: undefined,
+      geb_monat: undefined,
+      geb_tag: undefined,
+      plz: undefined,
+      ort: undefined,
+      strasse: undefined,
+      vorname: undefined,
+      nachname: undefined,
+      geschlecht: 'Divers',
+      beruf: true,
+      teilnameart: true
+    };
+  }
+  ngOnInit() {
+    this._clear();
+  }
   validEmail(email){
     let valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
     return valid;
@@ -141,6 +174,11 @@ export class AntragComponent implements OnInit {
   send() {
     this.backend
       .sendeAntrag({ ...this.input, btrgJrl: this.calcJhrl(), btrgMntl: this.calcMntl() })
-      .subscribe(() => console.log('success'));
+      .subscribe(() => {
+        this.successOpen = true;
+        this._clear();
+      }, ()=>{
+        this.errorOpen = true;
+      });
   }
 }
