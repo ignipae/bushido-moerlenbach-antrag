@@ -1,1 +1,147 @@
-<p>kuendigung works!</p>
+<div style="margin:1rem">
+  <div
+    style="width:100%;justify-content: center;display:flex;margin-bottom:2rem"
+  >
+    <h1 class="title">Kündigung</h1>
+  </div>
+  <div
+    style="width:100%;justify-content: center;display:flex;margin-top:1rem;margin-bottom:1rem"
+  ></div>
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <label class="label">Name*</label>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <p class="control is-expanded ">
+          <input
+            class="input"
+            type="text"
+            [(ngModel)]="input.vorname"
+            placeholder="Vorname"
+            [class.is-danger]="input.vorname !== undefined && !input.vorname"
+          />
+        </p>
+      </div>
+      <div class="field">
+        <p class="control is-expanded ">
+          <input
+            class="input"
+            type="text"
+            [(ngModel)]="input.nachname"
+            [class.is-danger]="input.nachname !== undefined && !input.nachname"
+            placeholder="Nachname"
+          />
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <label class="label">Geb. Datum*</label>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <p class="control is-expanded ">
+          <ui5-datepicker
+            (change)="gebDatumChanged($event)"
+            format="dd.MM.YYYY"
+          ></ui5-datepicker>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <label class="label"></label>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <p class="control is-expanded ">
+          <label class="checkbox">
+            <input type="checkbox" [(ngModel)]="agree" />
+            Bestimmungsgemäß gezahlte Beiträge und Gebühren werden grundsätzlich
+            nicht zurückerstattet. Reklamationen sind innerhalb von 6 Wochen zu
+            tätigen. Mit Vorlage des Aufnahmeantrags wird die Vereinssatzung
+            anerkannt. Bei <b>Kontoänderungen</b> informiere ich den Verein
+            <b>sofort</b>. Hiermit versichere ich keine ernsten Erkrankungen zu
+            haben. Mit der Veröffentlichung von Bildern für die Vereinsarbeit
+            bin ich einverstanden. Hiermit ermächtige ich den 1. BZV e.V. zu
+            Lasten meines Kontos bis auf Widerruf die Mitgliedsbeiträge,
+            Gebühren für Verbände sowie die
+            <b>einmalige Aufnahmegebühr in Höhe von EUR 25,--</b> von meinem
+            Konto abzubuchen.
+          </label>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="field is-horizontal">
+    <div class="field-label">
+      <!-- Left empty for spacing -->
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <div class="control">
+          <button
+            (click)="send()"
+            [disabled]="
+              !activeAndSelectedSport() || !agree || !checkMandatoryFields()
+                ? 'true'
+                : ''
+            "
+            class="button is-primary"
+          >
+            Antrag senden
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" [class.is-active]="successOpen">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <section class="modal-card-body">
+        <div style="display:flex;align-items: center">
+          <img
+            style="width:3.5rem; margin-right:1rem"
+            src="../../assets/success.svg"
+          />
+          <div>
+            Vielen Dank für Ihren Antrag. <br />
+            Sie werden in Kürze eine Bestätigung per E-Mail erhalten, welche Sie
+            bitte unterschrieben mitbringen, sobald Sie am ersten Trainingstag
+            erscheinen.
+          </div>
+        </div>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-success" (click)="successOpen = false">
+          Schließen
+        </button>
+      </footer>
+    </div>
+  </div>
+
+  <div class="modal" [class.is-active]="errorOpen">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <section class="modal-card-body">
+        <div style="display:flex;align-items: center">
+          <img
+            style="width:3.5rem; margin-right:1rem"
+            src="../../assets/error.svg"
+          />
+          <div>
+            Irgendetwas is gerade schief gelaufen. <br />
+            Bitte versuchen Sie es zu einem späteren Zeitpunkt erneut.
+          </div>
+        </div>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button" (click)="errorOpen = false">Schließen</button>
+      </footer>
+    </div>
+  </div>
+</div>
