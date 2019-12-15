@@ -1,10 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import * as iban from 'iban';
-import * as moment from 'moment';
-import { BackendService } from '../backend.service';
-@Component({ selector: 'app-antrag', templateUrl: './antrag.component.html', styleUrls: ['./antrag.component.scss'] })
+import { Component, OnInit } from "@angular/core";
+import * as iban from "iban";
+import * as moment from "moment";
+import { BackendService } from "../backend.service";
+@Component({
+  selector: "app-antrag",
+  templateUrl: "./antrag.component.html",
+  styleUrls: ["./antrag.component.scss"]
+})
 export class AntragComponent implements OnInit {
-  successOpen= false;
+  successOpen = false;
   errorOpen = false;
   input = {
     iban: undefined,
@@ -29,7 +33,7 @@ export class AntragComponent implements OnInit {
     strasse: undefined,
     vorname: undefined,
     nachname: undefined,
-    geschlecht: 'Divers',
+    geschlecht: "Divers",
     beruf: true,
     teilnameart: true
   };
@@ -39,13 +43,9 @@ export class AntragComponent implements OnInit {
   btrgJrl = 0;
   agree = false;
 
-  constructor(public backend: BackendService) {
-    const rs = iban.isValid('hello world');
-    const rs2 = iban.isValid('BE68539007547034');
-    console.log(rs);
-  }
+  constructor(public backend: BackendService) {}
 
-  _clear(){
+  _clear() {
     this.validIban = undefined;
     this.agree = false;
     this.input = {
@@ -71,7 +71,7 @@ export class AntragComponent implements OnInit {
       strasse: undefined,
       vorname: undefined,
       nachname: undefined,
-      geschlecht: 'Divers',
+      geschlecht: "Divers",
       beruf: true,
       teilnameart: true
     };
@@ -79,7 +79,19 @@ export class AntragComponent implements OnInit {
   ngOnInit() {
     this._clear();
   }
-  validEmail(email){
+  kontoGebDatumChanged(event) {
+    let selectedDate = event.target.dateValue;
+    this.input.konto_geb_jahr = selectedDate.getFullYear();
+    this.input.konto_geb_monat = selectedDate.getMonth() + 1;
+    this.input.konto_geb_tag = selectedDate.getDate();
+  }
+  gebDatumChanged(event) {
+    let selectedDate = event.target.dateValue;
+    this.input.geb_jahr = selectedDate.getFullYear();
+    this.input.geb_monat = selectedDate.getMonth() + 1;
+    this.input.geb_tag = selectedDate.getDate();
+  }
+  validEmail(email) {
     let valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
     return valid;
   }
@@ -101,10 +113,18 @@ export class AntragComponent implements OnInit {
   }
   isAdult() {
     if (this.input.geb_jahr && this.input.geb_monat && this.input.geb_tag) {
-      const date = moment(new Date(this.input.geb_monat + '.' + this.input.geb_tag + '.' + this.input.geb_jahr));
+      const date = moment(
+        new Date(
+          this.input.geb_monat +
+            "." +
+            this.input.geb_tag +
+            "." +
+            this.input.geb_jahr
+        )
+      );
       const currDate = moment(new Date());
 
-      const diffYears = currDate.diff(date, 'years');
+      const diffYears = currDate.diff(date, "years");
       return diffYears > 15;
     }
 
@@ -118,15 +138,25 @@ export class AntragComponent implements OnInit {
       return 0;
     }
 
-    if (this.input.type_selbst) {
-      value += this.isAdult() || this.input.beruf ? 18 : 15;
+    //if all options are selected there is a "discount"
+    if (
+      this.input.type_selbst &&
+      this.input.type_arnis &&
+      this.input.type_karate
+    ) {
+      value += this.isAdult() || this.input.beruf ? 25 : 20;
+    } else {
+      if (this.input.type_selbst) {
+        value += this.isAdult() || this.input.beruf ? 18 : 15;
+      }
+      if (this.input.type_arnis) {
+        value += this.isAdult() || this.input.beruf ? 18 : 15;
+      }
+      if (this.input.type_karate) {
+        value += this.isAdult() || this.input.beruf ? 18 : 15;
+      }
     }
-    if (this.input.type_arnis) {
-      value += this.isAdult() || this.input.beruf ? 18 : 15;
-    }
-    if (this.input.type_karate) {
-      value += this.isAdult() || this.input.beruf ? 18 : 15;
-    }
+
     return value;
   }
   calcJhrl() {
@@ -145,13 +175,19 @@ export class AntragComponent implements OnInit {
       !this.input.ort ||
       !this.input.plz ||
       !this.input.strasse ||
-      (this.input.geb_jahr == undefined || this.input.geb_jahr < 0) ||
-      (this.input.geb_monat == undefined || !this.validMonth(this.input.geb_monat)) ||
-      (this.input.geb_tag == undefined || !this.validDay(this.input.geb_tag)) ||
+      this.input.geb_jahr == undefined ||
+      this.input.geb_jahr < 0 ||
+      this.input.geb_monat == undefined ||
+      !this.validMonth(this.input.geb_monat) ||
+      this.input.geb_tag == undefined ||
+      !this.validDay(this.input.geb_tag) ||
       !this.validEmail(this.input.email) ||
-      (this.input.konto_geb_jahr == undefined || this.input.konto_geb_jahr < 0) ||
-      (this.input.konto_geb_monat == undefined || !this.validMonth(this.input.konto_geb_monat)) ||
-      (this.input.konto_geb_tag == undefined || !this.validMonth(this.input.konto_geb_tag)) ||
+      this.input.konto_geb_jahr == undefined ||
+      this.input.konto_geb_jahr < 0 ||
+      this.input.konto_geb_monat == undefined ||
+      !this.validMonth(this.input.konto_geb_monat) ||
+      this.input.konto_geb_tag == undefined ||
+      !this.validMonth(this.input.konto_geb_tag) ||
       !this.input.konto_vorname ||
       !this.input.konto_nachname ||
       !this.validIban
@@ -164,7 +200,12 @@ export class AntragComponent implements OnInit {
   activeAndSelectedSport() {
     if (!this.input.teilnameart) {
       return true;
-    } else if (this.input.teilnameart && (this.input.type_arnis || this.input.type_karate || this.input.type_selbst)) {
+    } else if (
+      this.input.teilnameart &&
+      (this.input.type_arnis ||
+        this.input.type_karate ||
+        this.input.type_selbst)
+    ) {
       return true;
     }
     return false;
@@ -175,12 +216,19 @@ export class AntragComponent implements OnInit {
 
   send() {
     this.backend
-      .sendeAntrag({ ...this.input, btrgJrl: this.calcJhrl(), btrgMntl: this.calcMntl() })
-      .subscribe(() => {
-        this.successOpen = true;
-        this._clear();
-      }, ()=>{
-        this.errorOpen = true;
-      });
+      .sendeAntrag({
+        ...this.input,
+        btrgJrl: this.calcJhrl(),
+        btrgMntl: this.calcMntl()
+      })
+      .subscribe(
+        () => {
+          this.successOpen = true;
+          this._clear();
+        },
+        () => {
+          this.errorOpen = true;
+        }
+      );
   }
 }

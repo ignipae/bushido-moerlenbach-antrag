@@ -1,8 +1,12 @@
 <div style="margin:1rem">
-  <div style="width:100%;justify-content: center;display:flex;margin-bottom:2rem">
+  <div
+    style="width:100%;justify-content: center;display:flex;margin-bottom:2rem"
+  >
     <h1 class="title">Aufnahmeantrag</h1>
   </div>
-  <div style="width:100%;justify-content: center;display:flex;margin-top:1rem;margin-bottom:1rem">
+  <div
+    style="width:100%;justify-content: center;display:flex;margin-top:1rem;margin-bottom:1rem"
+  >
     <h2 class="title is-5">- Teilnehmer Informationen -</h2>
   </div>
   <div class="field is-horizontal">
@@ -13,11 +17,21 @@
       <div class="field is-narrow">
         <div class="control">
           <label class="radio">
-            <input type="radio" [value]="true" name="teilname" [(ngModel)]="input.teilnameart" />
+            <input
+              type="radio"
+              [value]="true"
+              name="teilname"
+              [(ngModel)]="input.teilnameart"
+            />
             Aktive Teilnahme
           </label>
           <label class="radio">
-            <input type="radio" [value]="false" name="teilname" [(ngModel)]="input.teilnameart" />
+            <input
+              type="radio"
+              [value]="false"
+              name="teilname"
+              [(ngModel)]="input.teilnameart"
+            />
             Passive Teilnahme
           </label>
         </div>
@@ -32,11 +46,21 @@
       <div class="field is-narrow">
         <div class="control">
           <label class="radio">
-            <input type="radio" name="berufstaetig" [value]="true" [(ngModel)]="input.beruf" />
+            <input
+              type="radio"
+              name="berufstaetig"
+              [value]="true"
+              [(ngModel)]="input.beruf"
+            />
             Ja
           </label>
           <label class="radio">
-            <input type="radio" name="berufstaetig" [value]="false" [(ngModel)]="input.beruf" />
+            <input
+              type="radio"
+              name="berufstaetig"
+              [value]="false"
+              [(ngModel)]="input.beruf"
+            />
             Nein
           </label>
         </div>
@@ -139,10 +163,28 @@
     <div class="field-body">
       <div class="field">
         <p class="control is-expanded ">
+          <ui5-datepicker
+            (change)="gebDatumChanged($event)"
+            format="dd.MM.YYYY"
+          ></ui5-datepicker>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <label class="label">Geb. Datum*</label>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <p class="control is-expanded ">
           <input
             class="input"
             type="number"
-            [class.is-danger]="input.geb_tag !== undefined && !validDay(input.geb_tag)"
+            [class.is-danger]="
+              input.geb_tag !== undefined && !validDay(input.geb_tag)
+            "
             [(ngModel)]="input.geb_tag"
             placeholder="Tag"
           />
@@ -153,7 +195,9 @@
           <input
             class="input"
             type="number"
-            [class.is-danger]="input.geb_monat !== undefined && !validMonth(input.geb_monat)"
+            [class.is-danger]="
+              input.geb_monat !== undefined && !validMonth(input.geb_monat)
+            "
             [(ngModel)]="input.geb_monat"
             placeholder="Monat"
           />
@@ -164,14 +208,17 @@
           <input
             class="input"
             type="number"
-            [class.is-danger]="input.geb_jahr !== undefined && input.geb_jahr < 0"
+            [class.is-danger]="
+              input.geb_jahr !== undefined && input.geb_jahr < 0
+            "
             [(ngModel)]="input.geb_jahr"
             placeholder="Jahr"
           />
         </p>
       </div>
     </div>
-  </div>
+  </div> -->
+
   <div class="field is-horizontal">
     <div class="field-label is-normal">
       <label class="label">Telefon</label>
@@ -179,17 +226,32 @@
     <div class="field-body">
       <div class="field">
         <p class="control is-expanded ">
-          <input class="input" type="tel" [(ngModel)]="input.privat_telefon" placeholder="Privat" />
+          <input
+            class="input"
+            type="tel"
+            [(ngModel)]="input.privat_telefon"
+            placeholder="Privat"
+          />
         </p>
       </div>
       <div class="field">
         <p class="control is-expanded ">
-          <input class="input" type="tel" [(ngModel)]="input.mobil" placeholder="Mobil" />
+          <input
+            class="input"
+            type="tel"
+            [(ngModel)]="input.mobil"
+            placeholder="Mobil"
+          />
         </p>
       </div>
       <div class="field">
         <p class="control is-expanded ">
-          <input class="input" type="tel" [(ngModel)]="input.telfax" placeholder="Telefax" />
+          <input
+            class="input"
+            type="tel"
+            [(ngModel)]="input.telfax"
+            placeholder="Telefax"
+          />
         </p>
       </div>
     </div>
@@ -205,15 +267,22 @@
           <input
             class="input"
             type="email"
-            [class.is-danger]="input.email !== undefined && !validEmail(input.email)"
+            [class.is-danger]="
+              input.email !== undefined && !validEmail(input.email)
+            "
             [(ngModel)]="input.email"
             placeholder="xxx@email.de"
           />
         </p>
+        <p class="help is-success">
+          Eine Kopie dieses Antrags geht an diese E-Mail
+        </p>
       </div>
     </div>
   </div>
-  <div style="width:100%;justify-content: center;display:flex;margin-top:1rem;margin-bottom:1rem">
+  <div
+    style="width:100%;justify-content: center;display:flex;margin-top:1rem;margin-bottom:1rem"
+  >
     <h2 class="title is-5">- Konto Informationen -</h2>
   </div>
   <div class="field is-horizontal">
@@ -226,7 +295,9 @@
           <input
             class="input"
             type="text"
-            [class.is-danger]="input.konto_vorname !== undefined && !input.konto_vorname"
+            [class.is-danger]="
+              input.konto_vorname !== undefined && !input.konto_vorname
+            "
             [(ngModel)]="input.konto_vorname"
             placeholder="Vorname"
           />
@@ -237,7 +308,9 @@
           <input
             class="input"
             type="text"
-            [class.is-danger]="input.konto_nachname !== undefined && !input.konto_nachname"
+            [class.is-danger]="
+              input.konto_nachname !== undefined && !input.konto_nachname
+            "
             [(ngModel)]="input.konto_nachname"
             placeholder="Nachname"
           />
@@ -252,10 +325,28 @@
     <div class="field-body">
       <div class="field">
         <p class="control is-expanded ">
+          <ui5-datepicker
+            (change)="kontoGebDatumChanged($event)"
+            format="dd.MM.YYYY"
+          ></ui5-datepicker>
+        </p>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <label class="label">Geb. Datum*</label>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <p class="control is-expanded ">
           <input
             class="input"
             type="number"
-            [class.is-danger]="input.konto_geb_tag !== undefined && !validDay(input.konto_geb_tag)"
+            [class.is-danger]="
+              input.konto_geb_tag !== undefined &&
+              !validDay(input.konto_geb_tag)
+            "
             [(ngModel)]="input.konto_geb_tag"
             placeholder="Tag"
           />
@@ -266,7 +357,10 @@
           <input
             class="input"
             type="number"
-            [class.is-danger]="input.konto_geb_monat !== undefined && !validMonth(input.konto_geb_monat)"
+            [class.is-danger]="
+              input.konto_geb_monat !== undefined &&
+              !validMonth(input.konto_geb_monat)
+            "
             [(ngModel)]="input.konto_geb_monat"
             placeholder="Monat"
           />
@@ -277,14 +371,16 @@
           <input
             class="input"
             type="number"
-            [class.is-danger]="input.konto_geb_jahr !== undefined && input.konto_geb_jahr < 0"
+            [class.is-danger]="
+              input.konto_geb_jahr !== undefined && input.konto_geb_jahr < 0
+            "
             [(ngModel)]="input.konto_geb_jahr"
             placeholder="Jahr"
           />
         </p>
       </div>
     </div>
-  </div>
+  </div> -->
   <div class="field is-horizontal">
     <div class="field-label is-normal">
       <label class="label">IBAN*</label>
@@ -301,11 +397,19 @@
             (change)="_validateIban()"
           />
         </p>
+        <p
+          *ngIf="validIban != undefined && validIban == false"
+          class="help is-danger"
+        >
+          Bitte geben Sie eine gültige IBAN ein ...
+        </p>
       </div>
     </div>
   </div>
   <div *ngIf="input.teilnameart">
-    <div style="width:100%;justify-content: center;display:flex;margin-top:1rem;margin-bottom:1rem">
+    <div
+      style="width:100%;justify-content: center;display:flex;margin-top:1rem;margin-bottom:1rem"
+    >
       <h2 class="title is-5">- Sportart -</h2>
     </div>
     <div class="field is-horizontal">
@@ -340,7 +444,9 @@
       </div>
     </div>
   </div>
-  <div style="width:100%;justify-content: center;display:flex;margin-top:1rem;margin-bottom:1rem">
+  <div
+    style="width:100%;justify-content: center;display:flex;margin-top:1rem;margin-bottom:1rem"
+  >
     <h2 class="title is-5">- Beitrag -</h2>
   </div>
   <div class="field is-horizontal">
@@ -374,13 +480,16 @@
     <div class="field-body">
       <div class="field">
         <p class="control is-expanded ">
-          Bei 3 oder mehr aktiven Mitgliedern einer Familie ermäßigt sich der monatliche Beitrag. Damit wir eine
-          individuelle Absprache mit Ihnen treffen können, merken Sie dies bitte an.
+          Bei 3 oder mehr aktiven Mitgliedern einer Familie ermäßigt sich der
+          monatliche Beitrag. Damit wir eine individuelle Absprache mit Ihnen
+          treffen können, merken Sie dies bitte an.
         </p>
       </div>
     </div>
   </div>
-  <div style="width:100%;justify-content: center;display:flex;margin-top:1rem;margin-bottom:1rem">
+  <div
+    style="width:100%;justify-content: center;display:flex;margin-top:1rem;margin-bottom:1rem"
+  >
     <h2 class="title is-5">- Anmerkungen -</h2>
   </div>
   <div class="field is-horizontal">
@@ -405,13 +514,17 @@
         <p class="control is-expanded ">
           <label class="checkbox">
             <input type="checkbox" [(ngModel)]="agree" />
-            Bestimmungsgemäß gezahlte Beiträge und Gebühren werden grundsätzlich nicht zurückerstattet. Reklamationen
-            sind innerhalb von 6 Wochen zu tätigen. Mit Vorlage des Aufnahmeantrags wird die Vereinssatzung anerkannt.
-            Bei <b>Kontoänderungen</b> informiere ich den Verein <b>sofort</b>. Hiermit versichere ich keine ernsten
-            Erkrankungen zu haben. Mit der Veröffentlichung von Bildern für die Vereinsarbeit bin ich einverstanden.
-            Hiermit ermächtige ich den 1. BZV e.V. zu Lasten meines Kontos bis auf Widerruf die Mitgliedsbeiträge,
-            Gebühren für Verbände sowie die <b>einmalige Aufnahmegebühr in Höhe von EUR 25,--</b> von meinem Konto
-            abzubuchen.
+            Bestimmungsgemäß gezahlte Beiträge und Gebühren werden grundsätzlich
+            nicht zurückerstattet. Reklamationen sind innerhalb von 6 Wochen zu
+            tätigen. Mit Vorlage des Aufnahmeantrags wird die Vereinssatzung
+            anerkannt. Bei <b>Kontoänderungen</b> informiere ich den Verein
+            <b>sofort</b>. Hiermit versichere ich keine ernsten Erkrankungen zu
+            haben. Mit der Veröffentlichung von Bildern für die Vereinsarbeit
+            bin ich einverstanden. Hiermit ermächtige ich den 1. BZV e.V. zu
+            Lasten meines Kontos bis auf Widerruf die Mitgliedsbeiträge,
+            Gebühren für Verbände sowie die
+            <b>einmalige Aufnahmegebühr in Höhe von EUR 25,--</b> von meinem
+            Konto abzubuchen.
           </label>
         </p>
       </div>
@@ -426,7 +539,11 @@
         <div class="control">
           <button
             (click)="send()"
-            [disabled]="!activeAndSelectedSport() || !agree || !checkMandatoryFields() ? 'true' : ''"
+            [disabled]="
+              !activeAndSelectedSport() || !agree || !checkMandatoryFields()
+                ? 'true'
+                : ''
+            "
             class="button is-primary"
           >
             Antrag senden
@@ -441,18 +558,23 @@
   <div class="modal-background"></div>
   <div class="modal-card">
     <section class="modal-card-body">
-      
       <div style="display:flex;align-items: center">
-          <img style="width:3.5rem; margin-right:1rem" src="../../assets/success.svg" />
-          <div>
-              Vielen Dank für Ihren Antrag. <br />
-              Sie werden in Kürze eine Bestätigung per E-Mail erhalten, welche Sie bitte unterschrieben mitbringen, sobald Sie
-              am ersten Trainingstag erscheinen.
-          </div>
+        <img
+          style="width:3.5rem; margin-right:1rem"
+          src="../../assets/success.svg"
+        />
+        <div>
+          Vielen Dank für Ihren Antrag. <br />
+          Sie werden in Kürze eine Bestätigung per E-Mail erhalten, welche Sie
+          bitte unterschrieben mitbringen, sobald Sie am ersten Trainingstag
+          erscheinen.
         </div>
+      </div>
     </section>
     <footer class="modal-card-foot">
-      <button class="button is-success" (click)="successOpen = false">Schließen</button>
+      <button class="button is-success" (click)="successOpen = false">
+        Schließen
+      </button>
     </footer>
   </div>
 </div>
@@ -462,7 +584,10 @@
   <div class="modal-card">
     <section class="modal-card-body">
       <div style="display:flex;align-items: center">
-        <img style="width:3.5rem; margin-right:1rem" src="../../assets/error.svg" />
+        <img
+          style="width:3.5rem; margin-right:1rem"
+          src="../../assets/error.svg"
+        />
         <div>
           Irgendetwas is gerade schief gelaufen. <br />
           Bitte versuchen Sie es zu einem späteren Zeitpunkt erneut.
