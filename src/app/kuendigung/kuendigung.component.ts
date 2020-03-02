@@ -110,7 +110,8 @@ export class KuendigungComponent implements OnInit {
     this.backend
       .sendeKuendigung({
         ...this.input,
-        date: this.calcDate()
+        effectiveDate: this.calcDate(),
+        currentDate: moment(new Date()).format("DD.MM.YYYY")
       })
       .subscribe(
         () => {
