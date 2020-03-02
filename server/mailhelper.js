@@ -21,7 +21,7 @@ const sendUnregistrationMail = (formData, callback) => {
   const msg = {
     to: ["julian.breuksch@gmail.com"],
     from,
-    templateId: "d-3fcbde5fc0ad47af8930a9e51378712c",
+    templateId: "d-bdcc808309d74cbf87e0e04191ae114a",
     dynamic_template_data: formData,
     text: "Please enable HTML to show the content"
   };
@@ -29,5 +29,6 @@ const sendUnregistrationMail = (formData, callback) => {
 };
 
 module.exports = {
-  sendRegistrationMail
+  sendRegistrationMail,
+  sendUnregistrationMail
 };
