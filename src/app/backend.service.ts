@@ -1,14 +1,16 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class BackendService {
+  constructor(public http: HttpClient) {}
 
-  constructor(public http: HttpClient) { }
-
-  sendeAntrag(input){
-return this.http.post("/api/antrag/registrieren",input);
+  sendeAntrag(input) {
+    return this.http.post("/api/antrag/registrieren", input);
+  }
+  sendeKuendigung(input) {
+    return this.http.post("/api/antrag/kuendigen", input);
   }
 }
