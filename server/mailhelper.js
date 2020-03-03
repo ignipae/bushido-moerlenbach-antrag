@@ -12,7 +12,8 @@ const sendRegistrationMail = (formData, callback) => {
     from,
     templateId: "d-3fcbde5fc0ad47af8930a9e51378712c",
     dynamic_template_data: formData,
-    text: "Please enable HTML to show the content"
+    text: "Please enable HTML to show the content",
+    html: "&nbsp;"
   };
   sgMail.send(msg, callback);
 };
