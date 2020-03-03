@@ -23,7 +23,8 @@ const sendUnregistrationMail = (formData, callback) => {
     from,
     templateId: "d-bdcc808309d74cbf87e0e04191ae114a",
     dynamic_template_data: formData,
-    text: "Please enable HTML to show the content"
+    text: "Please enable HTML to show the content",
+    html: "&nbsp;"
   };
   sgMail.send(msg, callback);
 };
