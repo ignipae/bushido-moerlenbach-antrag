@@ -1,12 +1,8 @@
 <div style="margin:1rem">
-  <div
-    style="width:100%;justify-content: center;display:flex;margin-bottom:2rem"
-  >
+  <div style="width:100%;justify-content: center;display:flex;margin-bottom:2rem">
     <h1 class="title">Aufnahmeantrag</h1>
   </div>
-  <div
-    style="width:100%;justify-content: center;display:flex;margin-top:1rem;margin-bottom:1rem"
-  >
+  <div style="width:100%;justify-content: center;display:flex;margin-top:1rem;margin-bottom:1rem">
     <h2 class="title is-5">- Teilnehmer Informationen -</h2>
   </div>
   <div class="field is-horizontal">
@@ -17,21 +13,11 @@
       <div class="field is-narrow">
         <div class="control">
           <label class="radio">
-            <input
-              type="radio"
-              [value]="true"
-              name="teilname"
-              [(ngModel)]="input.teilnameart"
-            />
+            <input type="radio" [value]="true" name="teilname" [(ngModel)]="input.teilnameart" />
             Aktive Teilnahme
           </label>
           <label class="radio">
-            <input
-              type="radio"
-              [value]="false"
-              name="teilname"
-              [(ngModel)]="input.teilnameart"
-            />
+            <input type="radio" [value]="false" name="teilname" [(ngModel)]="input.teilnameart" />
             Passive Teilnahme
           </label>
         </div>
@@ -46,21 +32,11 @@
       <div class="field is-narrow">
         <div class="control">
           <label class="radio">
-            <input
-              type="radio"
-              name="berufstaetig"
-              [value]="true"
-              [(ngModel)]="input.beruf"
-            />
+            <input type="radio" name="berufstaetig" [value]="true" [(ngModel)]="input.beruf" />
             Ja
           </label>
           <label class="radio">
-            <input
-              type="radio"
-              name="berufstaetig"
-              [value]="false"
-              [(ngModel)]="input.beruf"
-            />
+            <input type="radio" name="berufstaetig" [value]="false" [(ngModel)]="input.beruf" />
             Nein
           </label>
         </div>
@@ -92,24 +68,14 @@
     <div class="field-body">
       <div class="field">
         <p class="control is-expanded ">
-          <input
-            class="input"
-            type="text"
-            [(ngModel)]="input.vorname"
-            placeholder="Vorname"
-            [class.is-danger]="input.vorname !== undefined && !input.vorname"
-          />
+          <input class="input" type="text" [(ngModel)]="input.vorname" placeholder="Vorname"
+            [class.is-danger]="input.vorname !== undefined && !input.vorname" />
         </p>
       </div>
       <div class="field">
         <p class="control is-expanded ">
-          <input
-            class="input"
-            type="text"
-            [(ngModel)]="input.nachname"
-            [class.is-danger]="input.nachname !== undefined && !input.nachname"
-            placeholder="Nachname"
-          />
+          <input class="input" type="text" [(ngModel)]="input.nachname"
+            [class.is-danger]="input.nachname !== undefined && !input.nachname" placeholder="Nachname" />
         </p>
       </div>
     </div>
@@ -122,35 +88,20 @@
     <div class="field-body">
       <div class="field">
         <p class="control is-expanded ">
-          <input
-            class="input"
-            type="text"
-            [(ngModel)]="input.strasse"
-            placeholder="Straße"
-            [class.is-danger]="input.strasse !== undefined && !input.strasse"
-          />
+          <input class="input" type="text" [(ngModel)]="input.strasse" placeholder="Straße"
+            [class.is-danger]="input.strasse !== undefined && !input.strasse" />
         </p>
       </div>
       <div class="field">
         <p class="control is-expanded ">
-          <input
-            class="input"
-            type="text"
-            [(ngModel)]="input.ort"
-            placeholder="Ort"
-            [class.is-danger]="input.ort !== undefined && !input.ort"
-          />
+          <input class="input" type="text" [(ngModel)]="input.ort" placeholder="Ort"
+            [class.is-danger]="input.ort !== undefined && !input.ort" />
         </p>
       </div>
       <div class="field">
         <p class="control is-expanded ">
-          <input
-            class="input"
-            type="text"
-            [(ngModel)]="input.plz"
-            placeholder="PLZ"
-            [class.is-danger]="input.plz !== undefined && !input.plz"
-          />
+          <input class="input" type="text" [(ngModel)]="input.plz" placeholder="PLZ"
+            [class.is-danger]="input.plz !== undefined && !input.plz" />
         </p>
       </div>
     </div>
@@ -163,10 +114,7 @@
     <div class="field-body">
       <div class="field">
         <p class="control is-expanded ">
-          <ui5-datepicker
-            (change)="gebDatumChanged($event)"
-            format="dd.MM.YYYY"
-          ></ui5-datepicker>
+          <ui5-datepicker (change)="gebDatumChanged($event)" format="dd.MM.YYYY"></ui5-datepicker>
         </p>
       </div>
     </div>
@@ -226,32 +174,17 @@
     <div class="field-body">
       <div class="field">
         <p class="control is-expanded ">
-          <input
-            class="input"
-            type="tel"
-            [(ngModel)]="input.privat_telefon"
-            placeholder="Privat"
-          />
+          <input class="input" type="tel" [(ngModel)]="input.privat_telefon" placeholder="Privat" />
         </p>
       </div>
       <div class="field">
         <p class="control is-expanded ">
-          <input
-            class="input"
-            type="tel"
-            [(ngModel)]="input.mobil"
-            placeholder="Mobil"
-          />
+          <input class="input" type="tel" [(ngModel)]="input.mobil" placeholder="Mobil" />
         </p>
       </div>
       <div class="field">
         <p class="control is-expanded ">
-          <input
-            class="input"
-            type="tel"
-            [(ngModel)]="input.telfax"
-            placeholder="Telefax"
-          />
+          <input class="input" type="tel" [(ngModel)]="input.telfax" placeholder="Telefax" />
         </p>
       </div>
     </div>
@@ -264,15 +197,9 @@
     <div class="field-body">
       <div class="field">
         <p class="control is-expanded">
-          <input
-            class="input"
-            type="email"
-            [class.is-danger]="
+          <input class="input" type="email" [class.is-danger]="
               input.email !== undefined && !validEmail(input.email)
-            "
-            [(ngModel)]="input.email"
-            placeholder="xxx@email.de"
-          />
+            " [(ngModel)]="input.email" placeholder="xxx@email.de" />
         </p>
         <p class="help is-success">
           Eine Kopie dieses Antrags geht an diese E-Mail
@@ -280,9 +207,7 @@
       </div>
     </div>
   </div>
-  <div
-    style="width:100%;justify-content: center;display:flex;margin-top:1rem;margin-bottom:1rem"
-  >
+  <div style="width:100%;justify-content: center;display:flex;margin-top:1rem;margin-bottom:1rem">
     <h2 class="title is-5">- Konto Informationen -</h2>
   </div>
   <div class="field is-horizontal">
@@ -292,28 +217,16 @@
     <div class="field-body">
       <div class="field">
         <p class="control is-expanded ">
-          <input
-            class="input"
-            type="text"
-            [class.is-danger]="
+          <input class="input" type="text" [class.is-danger]="
               input.konto_vorname !== undefined && !input.konto_vorname
-            "
-            [(ngModel)]="input.konto_vorname"
-            placeholder="Vorname"
-          />
+            " [(ngModel)]="input.konto_vorname" placeholder="Vorname" />
         </p>
       </div>
       <div class="field">
         <p class="control is-expanded ">
-          <input
-            class="input"
-            type="text"
-            [class.is-danger]="
+          <input class="input" type="text" [class.is-danger]="
               input.konto_nachname !== undefined && !input.konto_nachname
-            "
-            [(ngModel)]="input.konto_nachname"
-            placeholder="Nachname"
-          />
+            " [(ngModel)]="input.konto_nachname" placeholder="Nachname" />
         </p>
       </div>
     </div>
@@ -325,10 +238,7 @@
     <div class="field-body">
       <div class="field">
         <p class="control is-expanded ">
-          <ui5-datepicker
-            (change)="kontoGebDatumChanged($event)"
-            format="dd.MM.YYYY"
-          ></ui5-datepicker>
+          <ui5-datepicker (change)="kontoGebDatumChanged($event)" format="dd.MM.YYYY">{{kontoGebDatum}}</ui5-datepicker>
         </p>
       </div>
     </div>
@@ -388,28 +298,18 @@
     <div class="field-body">
       <div class="field">
         <p class="control is-expanded">
-          <input
-            class="input"
-            [class.is-danger]="validIban != undefined && validIban == false"
-            [class.is-success]="validIban != undefined && validIban == true"
-            type="text"
-            [(ngModel)]="input.iban"
-            (change)="_validateIban()"
-          />
+          <input class="input" [class.is-danger]="validIban != undefined && validIban == false"
+            [class.is-success]="validIban != undefined && validIban == true" type="text" [(ngModel)]="input.iban"
+            (change)="_validateIban()" />
         </p>
-        <p
-          *ngIf="validIban != undefined && validIban == false"
-          class="help is-danger"
-        >
+        <p *ngIf="validIban != undefined && validIban == false" class="help is-danger">
           Bitte geben Sie eine gültige IBAN ein ...
         </p>
       </div>
     </div>
   </div>
   <div *ngIf="input.teilnameart">
-    <div
-      style="width:100%;justify-content: center;display:flex;margin-top:1rem;margin-bottom:1rem"
-    >
+    <div style="width:100%;justify-content: center;display:flex;margin-top:1rem;margin-bottom:1rem">
       <h2 class="title is-5">- Sportart -</h2>
     </div>
     <div class="field is-horizontal">
@@ -444,9 +344,7 @@
       </div>
     </div>
   </div>
-  <div
-    style="width:100%;justify-content: center;display:flex;margin-top:1rem;margin-bottom:1rem"
-  >
+  <div style="width:100%;justify-content: center;display:flex;margin-top:1rem;margin-bottom:1rem">
     <h2 class="title is-5">- Beitrag -</h2>
   </div>
   <div class="field is-horizontal">
@@ -487,9 +385,7 @@
       </div>
     </div>
   </div>
-  <div
-    style="width:100%;justify-content: center;display:flex;margin-top:1rem;margin-bottom:1rem"
-  >
+  <div style="width:100%;justify-content: center;display:flex;margin-top:1rem;margin-bottom:1rem">
     <h2 class="title is-5">- Anmerkungen -</h2>
   </div>
   <div class="field is-horizontal">
@@ -537,15 +433,11 @@
     <div class="field-body">
       <div class="field">
         <div class="control">
-          <button
-            (click)="send()"
-            [disabled]="
+          <button (click)="send()" [disabled]="
               !activeAndSelectedSport() || !agree || !checkMandatoryFields()
                 ? 'true'
                 : ''
-            "
-            class="button is-primary"
-          >
+            " class="button is-primary">
             Antrag senden
           </button>
         </div>
@@ -559,10 +451,7 @@
   <div class="modal-card">
     <section class="modal-card-body">
       <div style="display:flex;align-items: center">
-        <img
-          style="width:3.5rem; margin-right:1rem"
-          src="../../assets/success.svg"
-        />
+        <img style="width:3.5rem; margin-right:1rem" src="../../assets/success.svg" />
         <div>
           Vielen Dank für Ihren Antrag. <br />
           Sie werden in Kürze eine Bestätigung per E-Mail erhalten, welche Sie
@@ -584,10 +473,7 @@
   <div class="modal-card">
     <section class="modal-card-body">
       <div style="display:flex;align-items: center">
-        <img
-          style="width:3.5rem; margin-right:1rem"
-          src="../../assets/error.svg"
-        />
+        <img style="width:3.5rem; margin-right:1rem" src="../../assets/error.svg" />
         <div>
           Irgendetwas is gerade schief gelaufen. <br />
           Bitte versuchen Sie es zu einem späteren Zeitpunkt erneut.

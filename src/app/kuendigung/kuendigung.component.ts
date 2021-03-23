@@ -13,6 +13,7 @@ export class KuendigungComponent implements OnInit {
   public effectiveDate;
   public agree_passive = false;
   public agree_active = false;
+  public gebDatum = "";
   public input = {
     email: undefined,
     vorname: undefined,
@@ -27,10 +28,11 @@ export class KuendigungComponent implements OnInit {
     zahler_geb_tag: undefined,
     wechsel_passiv: false
   };
-  constructor(public backend: BackendService) {}
+  constructor(public backend: BackendService) { }
   _clear() {
     this.agree_passive = false;
     this.agree_active = false;
+    this.gebDatum = "";
 
     this.input = {
       email: undefined,
@@ -123,5 +125,5 @@ export class KuendigungComponent implements OnInit {
         }
       );
   }
-  ngOnInit() {}
+  ngOnInit() { }
 }

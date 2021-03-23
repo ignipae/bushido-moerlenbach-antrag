@@ -10,6 +10,7 @@ import { BackendService } from "../backend.service";
 export class AntragComponent implements OnInit {
   successOpen = false;
   errorOpen = false;
+  kontoGebDatum = "";
   input = {
     iban: undefined,
     konto_vorname: undefined,
@@ -43,9 +44,10 @@ export class AntragComponent implements OnInit {
   btrgJrl = 0;
   agree = false;
 
-  constructor(public backend: BackendService) {}
+  constructor(public backend: BackendService) { }
 
   _clear() {
+    this.kontoGebDatum = "";
     this.validIban = undefined;
     this.agree = false;
     this.input = {
@@ -116,10 +118,10 @@ export class AntragComponent implements OnInit {
       const date = moment(
         new Date(
           this.input.geb_monat +
-            "." +
-            this.input.geb_tag +
-            "." +
-            this.input.geb_jahr
+          "." +
+          this.input.geb_tag +
+          "." +
+          this.input.geb_jahr
         )
       );
       const currDate = moment(new Date());
@@ -187,7 +189,7 @@ export class AntragComponent implements OnInit {
       this.input.konto_geb_monat == undefined ||
       !this.validMonth(this.input.konto_geb_monat) ||
       this.input.konto_geb_tag == undefined ||
-      !this.validMonth(this.input.konto_geb_tag) ||
+      !this.validDay(this.input.konto_geb_tag) ||
       !this.input.konto_vorname ||
       !this.input.konto_nachname ||
       !this.validIban

@@ -6,6 +6,26 @@ const from = {
   name: "Bushido Moerlenbach"
 };
 
+const test = (callback) => {
+  const msg = {
+    to: 'julian.breuksch@gmail.com', // Change to your recipient
+    from: 'test@example.com', // Change to your verified sender
+    subject: 'Sending with SendGrid is Fun',
+    templateId: "d-3fcbde5fc0ad47af8930a9e51378712c",
+    text: "Please enable HTML to show the content",
+    html: "&nbsp;"
+  }
+  sgMail
+    .send(msg)
+    .then(() => {
+      console.log('Email sent')
+      callback();
+    })
+    .catch((error) => {
+      console.error(error)
+    })
+}
+
 const sendRegistrationMail = (formData, callback) => {
   const msg = {
     to: ["julian.breuksch@gmail.com", formData.email],
@@ -32,5 +52,6 @@ const sendUnregistrationMail = (formData, callback) => {
 
 module.exports = {
   sendRegistrationMail,
-  sendUnregistrationMail
+  sendUnregistrationMail,
+  test
 };

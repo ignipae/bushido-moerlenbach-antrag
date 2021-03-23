@@ -1,12 +1,8 @@
 <div style="margin:1rem">
-  <div
-    style="width:100%;justify-content: center;display:flex;margin-bottom:2rem"
-  >
+  <div style="width:100%;justify-content: center;display:flex;margin-bottom:2rem">
     <h1 class="title">Kündigung zum {{ calcDate() }}</h1>
   </div>
-  <div
-    style="width:100%;justify-content: center;display:flex;margin-top:1rem;margin-bottom:1rem"
-  >
+  <div style="width:100%;justify-content: center;display:flex;margin-top:1rem;margin-bottom:1rem">
     <h2 class="title is-5">- Teilnehmer Informationen -</h2>
   </div>
   <div class="field is-horizontal">
@@ -16,24 +12,14 @@
     <div class="field-body">
       <div class="field">
         <p class="control is-expanded ">
-          <input
-            class="input"
-            type="text"
-            [(ngModel)]="input.vorname"
-            placeholder="Vorname"
-            [class.is-danger]="input.vorname !== undefined && !input.vorname"
-          />
+          <input class="input" type="text" [(ngModel)]="input.vorname" placeholder="Vorname"
+            [class.is-danger]="input.vorname !== undefined && !input.vorname" />
         </p>
       </div>
       <div class="field">
         <p class="control is-expanded ">
-          <input
-            class="input"
-            type="text"
-            [(ngModel)]="input.nachname"
-            [class.is-danger]="input.nachname !== undefined && !input.nachname"
-            placeholder="Nachname"
-          />
+          <input class="input" type="text" [(ngModel)]="input.nachname"
+            [class.is-danger]="input.nachname !== undefined && !input.nachname" placeholder="Nachname" />
         </p>
       </div>
     </div>
@@ -45,10 +31,7 @@
     <div class="field-body">
       <div class="field">
         <p class="control is-expanded ">
-          <ui5-datepicker
-            (change)="gebDatumChanged($event)"
-            format="dd.MM.YYYY"
-          ></ui5-datepicker>
+          <ui5-datepicker (change)="gebDatumChanged($event)" format="dd.MM.YYYY">{{gebDatum}}</ui5-datepicker>
         </p>
       </div>
     </div>
@@ -60,20 +43,13 @@
     <div class="field-body">
       <div class="field">
         <p class="control is-expanded ">
-          <input
-            class="input"
-            type="text"
-            [(ngModel)]="input.email"
-            placeholder="Email"
-            [class.is-danger]="input.email !== undefined && !input.email"
-          />
+          <input class="input" type="text" [(ngModel)]="input.email" placeholder="Email"
+            [class.is-danger]="input.email !== undefined && !input.email" />
         </p>
       </div>
     </div>
   </div>
-  <div
-    style="width:100%;justify-content: center;display:flex;margin-top:1rem;margin-bottom:1rem"
-  >
+  <div style="width:100%;justify-content: center;display:flex;margin-top:1rem;margin-bottom:1rem">
     <h2 class="title is-5">- Konto Inhaber (wenn abweichend) -</h2>
   </div>
   <div class="field is-horizontal">
@@ -83,28 +59,16 @@
     <div class="field-body">
       <div class="field">
         <p class="control is-expanded ">
-          <input
-            class="input"
-            type="text"
-            [(ngModel)]="input.zahler_vorname"
-            placeholder="Vorname"
-            [class.is-danger]="
+          <input class="input" type="text" [(ngModel)]="input.zahler_vorname" placeholder="Vorname" [class.is-danger]="
               input.zahler_vorname !== undefined && !input.zahler_vorname
-            "
-          />
+            " />
         </p>
       </div>
       <div class="field">
         <p class="control is-expanded ">
-          <input
-            class="input"
-            type="text"
-            [(ngModel)]="input.zahler_nachname"
-            [class.is-danger]="
+          <input class="input" type="text" [(ngModel)]="input.zahler_nachname" [class.is-danger]="
               input.zahler_nachname !== undefined && !input.zahler_nachname
-            "
-            placeholder="Nachname"
-          />
+            " placeholder="Nachname" />
         </p>
       </div>
     </div>
@@ -116,10 +80,7 @@
     <div class="field-body">
       <div class="field">
         <p class="control is-expanded ">
-          <ui5-datepicker
-            (change)="gebDatumZahlerChanged($event)"
-            format="dd.MM.YYYY"
-          ></ui5-datepicker>
+          <ui5-datepicker (change)="gebDatumZahlerChanged($event)" format="dd.MM.YYYY"></ui5-datepicker>
         </p>
       </div>
     </div>
@@ -134,14 +95,11 @@
           <label class="checkbox">
             <input type="checkbox" [(ngModel)]="input.wechsel_passiv" />
             Alternativ zur Kündigung wähle ich die Möglichkeit der passiven
-            Mitgliedschaft zum <b>{{ calcDate() }}</b
-            >. Ab diesem Datum zahle ich nur 20 € pro Jahr (auch ggf. bis
+            Mitgliedschaft zum <b>{{ calcDate() }}</b>. Ab diesem Datum zahle ich nur 20 € pro Jahr (auch ggf. bis
             Jahresende) und kann jederzeit ohne erneute Aufnahmegebühr wieder
             mit dem aktiven Training beginnen. Dafür reicht eine kurze Email an
             die
-            <a target="_blank" href="mailto:mitglied@hellmann.club"
-              >Mitgliederverwaltung</a
-            >.
+            <a target="_blank" href="mailto:mitglied@hellmann.club">Mitgliederverwaltung</a>.
           </label>
         </p>
       </div>
@@ -160,10 +118,8 @@
             möglich.<br />
             Mir ist bewusst, dass bis zu diesem Datum die Mitgliedsbeiträge
             abgebucht werden.
-            <b
-              >Die Kündigung wird mit Zusenden der Bestätigung an meine
-              Emailadresse wirksam.</b
-            >
+            <b>Die Kündigung wird mit Zusenden der Bestätigung an meine
+              Emailadresse wirksam.</b>
           </label>
         </p>
       </div>
@@ -178,10 +134,8 @@
         <p class="control is-expanded ">
           <label class="checkbox">
             <input type="checkbox" [(ngModel)]="agree_passive" />
-            <b
-              >Die Umstellung in eine passive Mitgliedschaft wird mit Zusenden
-              der Bestätigung an meine Emailadresse wirksam.</b
-            >
+            <b>Die Umstellung in eine passive Mitgliedschaft wird mit Zusenden
+              der Bestätigung an meine Emailadresse wirksam.</b>
           </label>
         </p>
       </div>
@@ -194,17 +148,13 @@
     <div class="field-body">
       <div class="field">
         <div class="control">
-          <button
-            (click)="send()"
-            [disabled]="
+          <button (click)="send()" [disabled]="
               (!agree_active && !input.wechsel_passiv) ||
               (!agree_passive && input.wechsel_passiv) ||
               !checkMandatoryFields()
                 ? 'true'
                 : ''
-            "
-            class="button is-primary"
-          >
+            " class="button is-primary">
             Kündigung senden
           </button>
         </div>
@@ -217,10 +167,7 @@
     <div class="modal-card">
       <section class="modal-card-body">
         <div style="display:flex;align-items: center">
-          <img
-            style="width:3.5rem; margin-right:1rem"
-            src="../../assets/success.svg"
-          />
+          <img style="width:3.5rem; margin-right:1rem" src="../../assets/success.svg" />
           <div>
             Vielen Dank für Ihre Kündigung. <br />
             Sie werden in Kürze eine Bestätigung per E-Mail erhalten.
@@ -240,10 +187,7 @@
     <div class="modal-card">
       <section class="modal-card-body">
         <div style="display:flex;align-items: center">
-          <img
-            style="width:3.5rem; margin-right:1rem"
-            src="../../assets/error.svg"
-          />
+          <img style="width:3.5rem; margin-right:1rem" src="../../assets/error.svg" />
           <div>
             Irgendetwas is gerade schief gelaufen. <br />
             Bitte versuchen Sie es zu einem späteren Zeitpunkt erneut.
