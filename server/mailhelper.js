@@ -8,7 +8,7 @@ const from = {
 
 const test = (callback) => {
   const msg = {
-    to: 'julian.breuksch@gmail.com', // Change to your recipient
+    to: 'mitglied@hellmann.club', // Change to your recipient
     from: 'test@example.com', // Change to your verified sender
     subject: 'Sending with SendGrid is Fun',
     templateId: "d-3fcbde5fc0ad47af8930a9e51378712c",
@@ -28,7 +28,7 @@ const test = (callback) => {
 
 const sendRegistrationMail = (formData, callback) => {
   const msg = {
-    to: ["julian.breuksch@gmail.com", formData.email],
+    to: ["mitglied@hellmann.club", formData.email],
     from,
     templateId: "d-3fcbde5fc0ad47af8930a9e51378712c",
     dynamic_template_data: formData,
@@ -40,7 +40,7 @@ const sendRegistrationMail = (formData, callback) => {
 
 const sendUnregistrationMail = (formData, callback) => {
   const msg = {
-    to: ["julian.breuksch@gmail.com"],
+    to: ["mitglied@hellmann.club"],
     from,
     templateId: "d-bdcc808309d74cbf87e0e04191ae114a",
     dynamic_template_data: formData,
