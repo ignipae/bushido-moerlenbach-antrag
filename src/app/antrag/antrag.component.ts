@@ -94,7 +94,7 @@ export class AntragComponent implements OnInit {
     this.input.geb_tag = selectedDate.getDate();
   }
   validEmail(email) {
-    let valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
+    let valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(email);
     return valid;
   }
   validDay(day) {

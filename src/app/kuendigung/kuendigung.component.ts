@@ -52,15 +52,22 @@ export class KuendigungComponent implements OnInit {
   calcDate() {
     let currDate = new Date();
     let currMonth = currDate.getMonth();
+    // 3 monate frist
+    let frist = 3;
 
-    if (currMonth > 5) {
+    //wenn der derzeitige monat plus die frist nicht größer als Juni ist => kündigung möglich im juni diesen jahres
+    if ((currMonth + frist) <= 5) {
+      return "30.06." + currDate.getFullYear();
+    } else if ((currMonth + frist) <= 11) {
+      //wenn der derzeitige monat plus die frist nicht größer als Dezember ist => kündigung möglich im Dezember diesen jahres
       return "31.12." + currDate.getFullYear();
     } else {
-      return "30.06." + currDate.getFullYear();
+      // kündigung im Juni des Folgejahrs
+      return "30.06." + (currDate.getFullYear() + 1);
     }
   }
   validEmail(email) {
-    let valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
+    let valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(email);
     return valid;
   }
   validDay(day) {
