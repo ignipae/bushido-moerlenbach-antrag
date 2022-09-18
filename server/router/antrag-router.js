@@ -17,10 +17,8 @@ const unregister = (req, res) => {
 };
 
 const test = (req, res) => {
-  mailhelper.test(() => {
-    res.status(201).json({
-      message: "success"
-    });
+  res.status(201).json({
+    message: "success"
   });
 };
 
