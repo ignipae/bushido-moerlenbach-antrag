@@ -8,7 +8,10 @@ import { AntragComponent } from "./antrag/antrag.component";
 import { KuendigungComponent } from "./kuendigung/kuendigung.component";
 import { InputComponent } from "./shared/input/input.component";
 import "@ui5/webcomponents/dist/DatePicker";
-import "@ui5/webcomponents/dist/json-imports/i18n.js";
+//import "@ui5/webcomponents/dist/json-imports/i18n.js";
+import "@ui5/webcomponents/dist/Assets.js";
+
+
 
 @NgModule({
   declarations: [
