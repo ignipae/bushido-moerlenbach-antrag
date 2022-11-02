@@ -166,7 +166,7 @@ export class AntragComponent implements OnInit {
     if (!this.input.teilnameart) {
       value += 20;
     } else {
-      value += 25;
+      value += 30;
     }
     return value;
   }
