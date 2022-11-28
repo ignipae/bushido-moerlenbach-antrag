@@ -21,9 +21,18 @@ const test = (req, res) => {
     message: "success"
   });
 };
+const testMail = (req, res) => {
+  mailhelper.test(() => {
+    res.status(201).json({
+      message: "success"
+    });
+  });
+};
+
 
 router.post("/registrieren", register);
 router.post("/kuendigen", unregister);
 router.get("/test", test);
+router.get("/testMail", testMail);
 
 module.exports = router;
