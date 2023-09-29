@@ -17,9 +17,12 @@ const unregister = (req, res) => {
 };
 
 const test = (req, res) => {
-  res.status(201).json({
-    message: "success"
-  });
+  mailhelper.test(() => {
+    res.status(201).json({
+      message: "success"
+    });
+  })
+  
 };
 
 router.post("/registrieren", register);

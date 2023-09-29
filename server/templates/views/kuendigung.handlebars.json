@@ -1,0 +1,16 @@
+{
+  "currentDate": "",
+  "vorname": "Obi-Wan",
+  "nachname": "Rey",
+  "geb_tag": "",
+  "geb_monat": "",
+  "geb_jahr": "",
+  "email": "rey@example.com",
+  "zahler_vorname": "Mary",
+  "zahler_nachname": "Obi-Wan",
+  "zahler_geb_tag": "",
+  "zahler_geb_monat": "",
+  "zahler_geb_jahr": "",
+  "wechsel_passiv": true,
+  "effectiveDate": "10.3.1991"
+}
