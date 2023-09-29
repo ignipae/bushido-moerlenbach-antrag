@@ -12,7 +12,9 @@
     "e2e": "ng e2e",
     "postinstall": "npm run build:prod"
   },
-
+  "engines": {
+    "node": "16.17.0"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~8.2.0",
