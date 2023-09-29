@@ -35,7 +35,7 @@
     "express": "4.17.1",
     "iban": "0.0.12",
     "mailgun-js": "0.22.0",
-    "moment": "2.24.0",
+    "moment": "2.29.4",
     "nodemailer": "6.9.5",
     "nodemailer-express-handlebars": "6.1.0",
     "path": "0.12.7",
