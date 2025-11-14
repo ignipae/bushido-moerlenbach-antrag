@@ -361,7 +361,7 @@
             <strong>€ {{ calcJhrl() }},-- jährlich</strong>
           </div>
           <div>
-            <strong>€ 30,-- Aufnahmegebühr einmalig</strong>
+            <strong>€ {{ getRegistrationFee() }},-- Aufnahmegebühr einmalig</strong>
           </div>
         </div>
         <!-- <p class="control is-expanded ">
@@ -416,10 +416,10 @@
             anerkannt. Bei <b>Kontoänderungen</b> informiere ich den Verein
             <b>sofort</b>. Hiermit versichere ich keine ernsten Erkrankungen zu
             haben. Mit der Veröffentlichung von Bildern für die Vereinsarbeit
-            bin ich einverstanden. Hiermit ermächtige ich den 1. BZV e.V. zu
+            einverstanden. Hiermit ermächtige ich den 1. BZV e.V. zu
             Lasten meines Kontos bis auf Widerruf die Mitgliedsbeiträge,
             Gebühren für Verbände sowie die
-            <b>einmalige Aufnahmegebühr in Höhe von EUR 30,--</b> von meinem
+            <b>einmalige Aufnahmegebühr in Höhe von EUR {{ getRegistrationFee() }},--</b> von meinem
             Konto abzubuchen.
           </label>
         </p>

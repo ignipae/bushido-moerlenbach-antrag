@@ -95,7 +95,7 @@
           <label class="checkbox">
             <input type="checkbox" [(ngModel)]="input.wechsel_passiv" />
             Alternativ zur Kündigung wähle ich die Möglichkeit der passiven
-            Mitgliedschaft zum <b>{{ calcDate() }}</b>. Ab diesem Datum zahle ich nur 20 € pro Jahr (auch ggf. bis
+            Mitgliedschaft zum <b>{{ calcDate() }}</b>. Ab diesem Datum zahle ich nur {{ getPassiveAnnualFee() }} € pro Jahr (auch ggf. bis
             Jahresende) und kann jederzeit ohne erneute Aufnahmegebühr wieder
             mit dem aktiven Training beginnen. Dafür reicht eine kurze Email an
             die

@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import * as iban from "iban";
 import * as moment from "moment";
 import { BackendService } from "../backend.service";
+import { CostsConfig, CostCalculator } from "../shared/config/costs.config";
 @Component({
   selector: "app-antrag",
   templateUrl: "./antrag.component.html",
@@ -134,41 +135,21 @@ export class AntragComponent implements OnInit {
   }
 
   calcMntl() {
-    let value = 0;
-
-    if (!this.input.teilnameart) {
-      return 0;
-    }
-
-    //if all options are selected there is a "discount"
-    if (
-      this.input.type_selbst &&
-      this.input.type_arnis &&
-      this.input.type_karate
-    ) {
-      value += this.isAdult() || this.input.beruf ? 25 : 20;
-    } else {
-      if (this.input.type_selbst) {
-        value += this.isAdult() || this.input.beruf ? 18 : 15;
+    return CostCalculator.calculateMonthlyCost(
+      this.input.teilnameart,
+      this.isAdult() || this.input.beruf,
+      {
+        karate: this.input.type_karate,
+        selbst: this.input.type_selbst,
+        arnis: this.input.type_arnis
       }
-      if (this.input.type_arnis) {
-        value += this.isAdult() || this.input.beruf ? 18 : 15;
-      }
-      if (this.input.type_karate) {
-        value += this.isAdult() || this.input.beruf ? 18 : 15;
-      }
-    }
-
-    return value;
+    );
   }
   calcJhrl() {
-    let value = 0;
-    if (!this.input.teilnameart) {
-      value += 20;
-    } else {
-      value += 30;
-    }
-    return value;
+    return CostCalculator.calculateAnnualCost(this.input.teilnameart);
+  }
+  getRegistrationFee() {
+    return CostCalculator.getRegistrationFee();
   }
   checkMandatoryFields() {
     if (

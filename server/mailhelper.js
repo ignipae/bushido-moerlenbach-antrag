@@ -1,6 +1,7 @@
 // const sgMail = require("@sendgrid/mail");
 const nodemailer = require('nodemailer');
 const path = require('path');
+const { CostsConfig, CostCalculator } = require('./config/costs.config');
 const viewPath = path.resolve(__dirname, './templates/views/');
 const partialsPath = path.resolve(__dirname, './templates/partials');
 
@@ -62,7 +63,8 @@ const test = (callback) => {
       zahler_geb_monat: "03", // Monatszahl für März
       zahler_geb_tag: "8",
       wechsel_passiv: true,
-      effectiveDate: "10.03.1991"
+      effectiveDate: "10.03.1991",
+      passiveAnnualFee: CostsConfig.annual.passive
     }
 
   };
@@ -72,23 +74,12 @@ const test = (callback) => {
 }
 
 const sendRegistrationMail = (formData, callback) => {
-  // const msg = {
-  //   to: ["mitglied@hellmann.club", formData.email],
-  //   from,
-  //   templateId: "d-3fcbde5fc0ad47af8930a9e51378712c",
-  //   dynamic_template_data: formData,
-  //   text: "Please enable HTML to show the content",
-  //   html: "&nbsp;"
-  // };
-  // sgMail.send(msg)
-  //   .then(() => {
-  //     console.log('Email sent')
-  //     callback();
-  //   })
-  //   .catch((error) => {
-  //     console.error(error)
-  //   })
-
+  // Add cost information to the email context
+  const emailContext = {
+    ...formData,
+    registrationFee: CostCalculator.getRegistrationFee(),
+    passiveAnnualFee: CostsConfig.annual.passive
+  };
 
   var mailOptions = {
     to: ["mitglied@hellmann.club", formData.email],
@@ -96,7 +87,7 @@ const sendRegistrationMail = (formData, callback) => {
     replyTo: "mitglied@hellmann.club",
     subject: 'Mitgliedschaftsantrag - Bushido Moerlenbach',
     template: 'antrag',
-    context: formData
+    context: emailContext
 
   };
 
@@ -104,22 +95,11 @@ const sendRegistrationMail = (formData, callback) => {
 };
 
 const sendUnregistrationMail = (formData, callback) => {
-  // const msg = {
-  //   to: ["mitglied@hellmann.club"],
-  //   from,
-  //   templateId: "d-bdcc808309d74cbf87e0e04191ae114a",
-  //   dynamic_template_data: formData,
-  //   text: "Please enable HTML to show the content",
-  //   html: "&nbsp;"
-  // };
-  // sgMail.send(msg)
-  //   .then(() => {
-  //     console.log('Email sent')
-  //     callback();
-  //   })
-  //   .catch((error) => {
-  //     console.error(error)
-  //   })
+  // Add cost information to the email context
+  const emailContext = {
+    ...formData,
+    passiveAnnualFee: CostsConfig.annual.passive
+  };
 
   var mailOptions = {
     to: ["mitglied@hellmann.club"],
@@ -127,7 +107,7 @@ const sendUnregistrationMail = (formData, callback) => {
     replyTo: "mitglied@hellmann.club",
     subject: 'Mitgliedschaftskündigung - Bushido Moerlenbach', 
     template: 'kuendigung', 
-    context: formData
+    context: emailContext
 
   };
 

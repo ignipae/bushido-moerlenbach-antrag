@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import * as moment from "moment";
 import { BackendService } from "../backend.service";
+import { CostsConfig } from "../shared/config/costs.config";
 
 @Component({
   selector: "app-kuendigung",
@@ -131,6 +132,9 @@ export class KuendigungComponent implements OnInit {
           this.errorOpen = true;
         }
       );
+  }
+  getPassiveAnnualFee() {
+    return CostsConfig.annual.passive;
   }
   ngOnInit() { }
 }
